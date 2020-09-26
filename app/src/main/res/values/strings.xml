@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Potty Time</string>
+
+    <string name="latAndLon">Location:  lat%1$s lon%2$s\nCode: %3$s</string>
 </resources>

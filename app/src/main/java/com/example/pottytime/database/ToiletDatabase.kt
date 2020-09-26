@@ -1,6 +1,7 @@
 package com.example.pottytime.database
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -8,6 +9,7 @@ import com.example.pottytime.data.Toilet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+@Database(entities = arrayOf(Toilet::class), version = 1, exportSchema = false)
 abstract class ToiletDatabase : RoomDatabase() {
 
     abstract fun toiletDao(): ToiletDao
@@ -32,6 +34,17 @@ abstract class ToiletDatabase : RoomDatabase() {
 
             // Add sample toilet.
             var toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567" );
+            toiletDao.insert(toilet);
+            // Add sample toilet.
+            toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567" );
+            toiletDao.insert(toilet);
+
+            // Add sample toilet.
+            toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567" );
+            toiletDao.insert(toilet);
+
+            // Add sample toilet.
+            toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567" );
             toiletDao.insert(toilet);
         }
     }
