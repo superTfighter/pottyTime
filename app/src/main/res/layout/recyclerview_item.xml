@@ -9,11 +9,12 @@
     </data>
 
     <LinearLayout
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@color/colorToiletItemBackground">
+        android:background="@drawable/rounder_linearlayout_background">
 
         <TextView
             android:id="@+id/name"
@@ -26,7 +27,7 @@
 
         <ImageView
             android:id="@+id/image"
-            android:src="@mipmap/ic_mcdonalds"
+            android:src="@mipmap/ic_mcdonalds_round"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dog_detail_image_size"
             android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
@@ -44,7 +45,6 @@
             android:layout_marginTop="0dp"
             android:layout_marginRight="@dimen/dog_detail_description_margin_right"
             android:layout_marginBottom="@dimen/dog_detail_description_margin_bottom"
-            android:autoLink="web"
             android:text="@{@string/latAndLon(Double.toString(toilet.latitude),Double.toString(toilet.longitude),toilet.code)}" />
 
     </LinearLayout>
