@@ -17,19 +17,18 @@
         android:background="@drawable/rounder_linearlayout_background">
 
         <TextView
-            android:id="@+id/name"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dog_detail_name_margin_top"
-            android:layout_marginBottom="0dp"
-            android:text="@{toilet.name}" />
+        android:id="@+id/name"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dog_detail_name_margin_top"
+        android:layout_marginBottom="0dp"
+        android:text="@{toilet.name}" />
 
         <ImageView
             android:id="@+id/image"
-            android:src="@mipmap/ic_mcdonalds_round"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dog_detail_image_size"
+            android:layout_height="150dp"
             android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
             android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
             android:adjustViewBounds="true"

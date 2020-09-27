@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Potty Time</string>
-
     <string name="latAndLon">Location:  lat%1$s lon%2$s\nCode: %3$s</string>
+
+    <string name="hint_word">Word...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
 </resources>

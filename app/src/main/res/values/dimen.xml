@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="big_padding">16dp</dimen>
+    <dimen name="min_height">48dp</dimen>
 
     <!-- DogModel list -->
     <dimen name="recycler_margin_horizontal">4dp</dimen>
@@ -10,7 +11,7 @@
     <dimen name="recycler_item_footer_padding">16dp</dimen>
 
     <!-- DogModel detail -->
-    <dimen name="dog_detail_image_size">170dp</dimen>
+    <dimen name="dog_detail_image_size">200dp</dimen>
     <dimen name="dog_detail_image_margin_vertical">24dp</dimen>
     <dimen name="dog_detail_name_margin_top">24dp</dimen>
     <dimen name="dog_detail_description_margin_left">32dp</dimen>

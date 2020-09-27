@@ -1,15 +1,16 @@
 package com.example.pottytime.database
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.pottytime.data.Toilet
+import com.example.pottytime.data.ToiletType
+import com.example.pottytime.data.ToiletTypeConverter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Database(entities = arrayOf(Toilet::class), version = 1, exportSchema = false)
+@TypeConverters(ToiletTypeConverter::class)
 abstract class ToiletDatabase : RoomDatabase() {
 
     abstract fun toiletDao(): ToiletDao
@@ -33,18 +34,22 @@ abstract class ToiletDatabase : RoomDatabase() {
             toiletDao.deleteAll()
 
             // Add sample toilet.
-            var toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567" );
-            toiletDao.insert(toilet);
-            // Add sample toilet.
-            toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567" );
+            var toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567",ToiletType.MCDONALDS );
             toiletDao.insert(toilet);
 
-            // Add sample toilet.
-            toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567" );
+            toilet = Toilet(null, "Teszt helyszín 2" , 47.3560812, 18.9966442 ,"01234567",ToiletType.BURGERKING );
             toiletDao.insert(toilet);
 
-            // Add sample toilet.
-            toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567" );
+            toilet = Toilet(null, "Teszt helyszín 3" , 47.3560812, 18.9966442 ,"01234567",ToiletType.BURGERKING );
+            toiletDao.insert(toilet);
+
+            toilet = Toilet(null, "Teszt helyszín 4" , 47.3560812, 18.9966442 ,"01234567",ToiletType.MCDONALDS );
+            toiletDao.insert(toilet);
+
+            toilet = Toilet(null, "Teszt helyszín 5" , 47.3560812, 18.9966442 ,"01234567",ToiletType.OTHER );
+            toiletDao.insert(toilet);
+
+            toilet = Toilet(null, "Teszt helyszín 6" , 47.3560812, 18.9966442 ,"01234567",ToiletType.OTHER );
             toiletDao.insert(toilet);
         }
     }
