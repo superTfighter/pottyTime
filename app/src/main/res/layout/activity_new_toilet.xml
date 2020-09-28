@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.pottytime.viewmodels.NewToiletViewModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <EditText
         android:id="@+id/name"
+        android:text="@={viewmodel.name}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
@@ -19,6 +29,7 @@
 
     <EditText
         android:id="@+id/lat"
+        android:text="@={viewmodel.lat}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
@@ -28,13 +39,27 @@
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp" />
 
+
     <EditText
         android:id="@+id/lon"
+        android:text="@={viewmodel.lon}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
         android:fontFamily="sans-serif-light"
         android:hint="Longitude"
+        android:inputType="textAutoComplete"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/code"
+        android:text="@={viewmodel.code}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="Code"
         android:inputType="textAutoComplete"
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp" />
@@ -45,15 +70,18 @@
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
         android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:onItemSelected="@{(parent,view,pos,id)->viewmodel.onSelectItem(parent,view,pos,id)}"/>/>
 
     <Button
         android:id="@+id/button_save"
+        android:onClick="@{(v) -> viewmodel.onSaveButtomClick(v) }"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
         android:background="@color/colorPrimary"
         android:text="@string/button_save"
-        android:layout_margin="@dimen/big_padding"
         android:textColor="@color/buttonLabel" />
 
 </LinearLayout>
+</layout>

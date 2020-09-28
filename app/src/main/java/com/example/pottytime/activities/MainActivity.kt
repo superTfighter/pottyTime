@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
@@ -33,9 +34,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this,2)
 
         toiletViewModel = ViewModelProvider(this).get(ToiletViewModel::class.java)
-
         toiletViewModel.allWords.observe(this, Observer { toilets ->
-            // Update the cached copy of the words in the adapter.
             toilets?.let { adapter.setToilets(it) }
         })
 
@@ -45,7 +44,6 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, newWordActivityRequestCode)
         }
 
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -53,12 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK)
         {
-            val toilet : Serializable? = data?.getSerializableExtra("Toilet");
-
-            //toilet is Toilet?;
-
-            Log.w("New Toilet", toilet.toString());
-
+            Toast.makeText(applicationContext, R.string.saved, Toast.LENGTH_LONG).show()
         }
         else
         {
