@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
     <EditText
         android:id="@+id/name"
         android:text="@={viewmodel.name}"
@@ -34,7 +33,7 @@
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
         android:fontFamily="sans-serif-light"
-        android:hint="Latitude"
+        android:hint="Latitude(not required)"
         android:inputType="textAutoComplete"
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp" />
@@ -47,7 +46,7 @@
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
         android:fontFamily="sans-serif-light"
-        android:hint="Longitude"
+        android:hint="Longitude(not required)"
         android:inputType="textAutoComplete"
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp" />
@@ -71,11 +70,11 @@
         android:minHeight="@dimen/min_height"
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp"
-        android:onItemSelected="@{(parent,view,pos,id)->viewmodel.onSelectItem(parent,view,pos,id)}"/>/>
+        android:onItemSelected="@{(parent,view,pos,id)->viewmodel.onSelectItem(parent,view,pos,id)}"/>
 
     <Button
         android:id="@+id/button_save"
-        android:onClick="@{(v) -> viewmodel.onSaveButtomClick(v) }"
+        android:onClick="@{(v) -> viewmodel.onSaveButtonClick(v) }"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/big_padding"

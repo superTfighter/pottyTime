@@ -15,6 +15,7 @@ import com.example.pottytime.R
 import com.example.pottytime.adapters.ToiletListAdapter
 import com.example.pottytime.data.Toilet
 import com.example.pottytime.viewmodels.ToiletViewModel
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.Serializable
 
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             toilets?.let { adapter.setToilets(it) }
         })
 
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val fab = findViewById<ExtendedFloatingActionButton>(R.id.extended_fab)
         fab.setOnClickListener {
             val intent = Intent(this@MainActivity, NewToiletActivity::class.java)
             startActivityForResult(intent, newWordActivityRequestCode)
@@ -53,12 +54,6 @@ class MainActivity : AppCompatActivity() {
         {
             Toast.makeText(applicationContext, R.string.saved, Toast.LENGTH_LONG).show()
         }
-        else
-        {
-            /*Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG).show()*/
-        }
+
     }
 }

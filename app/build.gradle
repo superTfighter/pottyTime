@@ -62,7 +62,7 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
 
     // Material design
-    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "com.google.android.material:material:$materialVersion"
 
     // Testing
     testImplementation 'junit:junit:4.12'

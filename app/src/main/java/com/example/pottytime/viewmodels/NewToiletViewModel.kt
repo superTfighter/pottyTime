@@ -37,29 +37,41 @@ class NewToiletViewModel(application: Application) : AndroidViewModel(applicatio
         repository = ToiletRepository(wordsDao)
     }
 
-    fun onSaveButtomClick(v : View)
+    fun onSaveButtonClick(v : View)
     {
-        Log.d("Name value: ", name);
-
         val activity : NewToiletActivity = v.context as NewToiletActivity;
         val replyIntent = Intent()
 
-        if (NameValidator(name).validate() && LocationValidator(lat).validate() && LocationValidator(lon).validate() && CodeValidator(code).validate()) {
+        if (NameValidator(name).validate() && LocationValidator(lat,lon).validate() && CodeValidator(code).validate()) {
 
             val t = Toilet(null,name,lat.toDouble(),lon.toDouble(),code, type)
             this.insert(t);
 
             activity.setResult(Activity.RESULT_OK, replyIntent)
             activity.finish()
+        }else if(NameValidator(name).validate() && CodeValidator(code).validate() && lat.isEmpty() && lon.isEmpty())
+        {
+            val t = Toilet(null,name,null,null,code, type)
+            this.insert(t);
 
+            activity.setResult(Activity.RESULT_OK, replyIntent)
+            activity.finish()
         }
         else
         {
-            //TODO: ALERT USER
-            Log.d("Name validation" ,NameValidator(name).validate().toString());
-            Log.d("Loc1 validation" ,LocationValidator(lat).validate().toString());
-            Log.d("Loc2 validation" ,LocationValidator(lon).validate().toString());
-            Log.d("Code validation" ,CodeValidator(code).validate().toString());
+            Log.d("Loc validation" ,LocationValidator(lat,lon).validate().toString());
+
+            if(!NameValidator(name).validate())
+            {
+                activity.showToaster("Please enter a valid name!");
+            }
+            else if(!CodeValidator(code).validate())
+            {
+                activity.showToaster("Please enter a valid code!");
+            }else if(!LocationValidator(lat,lon).validate())
+            {
+                activity.showToaster("Please enter a valid location!");
+            }
 
         }
 

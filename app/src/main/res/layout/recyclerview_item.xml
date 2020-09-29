@@ -9,7 +9,7 @@
     </data>
 
     <LinearLayout
-        android:layout_margin="10dp"
+        android:layout_margin="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -18,12 +18,12 @@
 
         <TextView
         android:id="@+id/name"
-        style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dog_detail_name_margin_top"
         android:layout_marginBottom="0dp"
-        android:text="@{toilet.name}" />
+        android:text="@{toilet.name}"
+            style="@style/TextAppearance.AppCompat.Title" />
 
         <ImageView
             android:id="@+id/image"
@@ -36,15 +36,26 @@
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/description"
-            style="@style/TextAppearance.AppCompat.Body1"
+            android:id="@+id/codeContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/dog_detail_description_margin_left"
             android:layout_marginTop="0dp"
             android:layout_marginRight="@dimen/dog_detail_description_margin_right"
             android:layout_marginBottom="@dimen/dog_detail_description_margin_bottom"
-            android:text="@{@string/latAndLon(Double.toString(toilet.latitude),Double.toString(toilet.longitude),toilet.code)}" />
+            android:text="@{@string/code(toilet.code.toString())}"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dog_detail_description_margin_left"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="@dimen/dog_detail_description_margin_right"
+            android:layout_marginBottom="@dimen/dog_detail_description_margin_bottom"
+            android:text="@{@string/latAndLon(Double.toString(toilet.latitude),Double.toString(toilet.longitude))}" />
 
     </LinearLayout>
 

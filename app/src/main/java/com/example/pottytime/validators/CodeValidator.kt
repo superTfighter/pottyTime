@@ -12,16 +12,6 @@ class CodeValidator(private val text: String) : ValidatorInterface {
             return false;
         }
 
-        try
-        {
-            val value : Int = text.toInt()
-        }
-        catch (e: NumberFormatException)
-        {
-            return  false;
-        }
-
         return true;
-
     }
 }

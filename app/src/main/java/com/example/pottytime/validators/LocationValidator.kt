@@ -2,18 +2,20 @@ package com.example.pottytime.validators
 
 import android.widget.EditText
 
-class LocationValidator(private val text: String) : ValidatorInterface{
+class LocationValidator(private val lat: String, private val lon: String) : ValidatorInterface{
 
     override fun validate() : Boolean
     {
-        if(text.isEmpty())
+
+        if((lat.isEmpty() && lon.isNotEmpty()) || (lat.isNotEmpty() && lon.isEmpty()))
         {
             return false;
         }
 
         try
         {
-            val value : Double = text.toDouble()
+            val latVal : Double = lat.toDouble()
+            val lonVal : Double = lon.toDouble()
         }
         catch (e: NumberFormatException)
         {

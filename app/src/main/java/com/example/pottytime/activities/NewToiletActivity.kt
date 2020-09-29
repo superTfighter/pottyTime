@@ -3,6 +3,7 @@ package com.example.pottytime.activities
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -13,11 +14,9 @@ import com.example.pottytime.viewmodels.NewToiletViewModel
 
 class NewToiletActivity : AppCompatActivity() {
 
-    //private lateinit var binding: ActivityNewToiletBinding
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_new_toilet)
 
         val binding: ActivityNewToiletBinding = DataBindingUtil.setContentView(this,R.layout.activity_new_toilet);
         binding.lifecycleOwner = this;
@@ -25,36 +24,12 @@ class NewToiletActivity : AppCompatActivity() {
         // Assign the component to a property in the binding class.
         binding.viewmodel = NewToiletViewModel(application)
         createSpinner(binding);
+    }
 
-        /*
-        val button = findViewById<Button>(R.id.button_save)
-        button.setOnClickListener {
-            val replyIntent = Intent()
-
-            type.getSelectedItem().toString();
-
-
-            if (NameValidator(name).validate() || LocationValidator(lat).validate() || LocationValidator(lon).validate() || CodeValidator(code).validate()) {
-
-            }
-            else
-            {
-
-                val name = name.text.toString()
-                val lat = lat.text.toString()
-                val lon = lon.text.toString()
-                val index : Int = type.getSelectedItemPosition();
-
-                var t : Toilet = Toilet(null,name,lat.toDouble(),lon.toDouble(),code.text.toString(), ToiletType.values()[index])
-                newToiletViewModel.insert(t);
-
-                setResult(Activity.RESULT_OK, replyIntent)
-                finish()
-            }
-        }*/
-
-
-
+    fun showToaster(message: String)
+    {
+        val toast = Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT)
+        toast.show()
     }
 
     private fun createSpinner(binding : ActivityNewToiletBinding )
@@ -72,6 +47,8 @@ class NewToiletActivity : AppCompatActivity() {
 
 
     }
+
+
 }
 
 
