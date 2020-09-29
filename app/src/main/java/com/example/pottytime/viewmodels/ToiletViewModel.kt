@@ -25,10 +25,4 @@ class ToiletViewModel(application: Application) : AndroidViewModel(application) 
         allWords = repository.allWords
     }
 
-    /**
-     * Launching a new coroutine to insert the data in a non-blocking way
-     */
-    fun insert(toilet: Toilet) = viewModelScope.launch(Dispatchers.IO) {
-        repository.insert(toilet)
-    }
 }

@@ -43,7 +43,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginRight="@dimen/dog_detail_description_margin_right"
             android:layout_marginBottom="@dimen/dog_detail_description_margin_bottom"
-            android:text="@{@string/code(toilet.code.toString())}"
+            android:text="@{@string/code(toilet.code)}"
             android:textStyle="bold"
             android:textSize="20sp"/>
 

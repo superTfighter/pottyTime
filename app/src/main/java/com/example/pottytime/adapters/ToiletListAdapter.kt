@@ -11,14 +11,17 @@ import com.example.pottytime.R
 import com.example.pottytime.data.Toilet
 import com.example.pottytime.data.ToiletType
 import com.example.pottytime.databinding.RecyclerviewItemBinding
+import java.util.function.ToLongBiFunction
 
 
 class ToiletListAdapter internal constructor(
     context: Context
 ) : RecyclerView.Adapter<ToiletListAdapter.ToiletViewHolder>() {
 
+    lateinit var listener: OnToiletSelected
     private val layoutInflater = LayoutInflater.from(context)
     private var toilet = emptyList<Toilet>() // Cached copy of words
+
 
     inner class ToiletViewHolder constructor (
         itemView: View,
@@ -57,6 +60,10 @@ class ToiletListAdapter internal constructor(
 
         holder.setImage(current.type);
         holder.setData(current)
+
+        holder.itemView.setOnClickListener{
+            listener.onToiletSelected(current)
+        }
     }
 
     internal fun setToilets(toilets: List<Toilet>) {
@@ -65,6 +72,10 @@ class ToiletListAdapter internal constructor(
     }
 
     override fun getItemCount() = toilet.size
+
+    interface OnToiletSelected {
+        fun onToiletSelected(toilet: Toilet)
+    }
 
 
 }

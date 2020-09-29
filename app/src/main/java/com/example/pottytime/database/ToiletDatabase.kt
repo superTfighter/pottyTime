@@ -40,17 +40,9 @@ abstract class ToiletDatabase : RoomDatabase() {
             toilet = Toilet(null, "Teszt helyszín 2" , 47.3560812, 18.9966442 ,"01234567",ToiletType.BURGERKING );
             toiletDao.insert(toilet);
 
-            toilet = Toilet(null, "Teszt helyszín 3" , 47.3560812, 18.9966442 ,"01234567",ToiletType.BURGERKING );
+            toilet = Toilet(null, "Teszt helyszín 3" , 47.3560812, 18.9966442 ,"01234567",ToiletType.OTHER );
             toiletDao.insert(toilet);
 
-            toilet = Toilet(null, "Teszt helyszín 4" , 47.3560812, 18.9966442 ,"01234567",ToiletType.MCDONALDS );
-            toiletDao.insert(toilet);
-
-            toilet = Toilet(null, "Teszt helyszín 5" , 47.3560812, 18.9966442 ,"01234567",ToiletType.OTHER );
-            toiletDao.insert(toilet);
-
-            toilet = Toilet(null, "Teszt helyszín 6" , 47.3560812, 18.9966442 ,"01234567",ToiletType.OTHER );
-            toiletDao.insert(toilet);
         }
     }
 

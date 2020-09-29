@@ -70,4 +70,7 @@ dependencies {
 
     // Serializable
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
+
+    //MapView
+    implementation 'org.osmdroid:osmdroid-android:6.1.8'
 }
