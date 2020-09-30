@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pottytime.R
 import com.example.pottytime.activities.NewToiletActivity
@@ -54,7 +55,7 @@ class ToiletListFragment() : Fragment() {
 
         val adapter = ToiletListAdapter(activity)
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(activity,2)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
 
         adapter.listener = this.listener;
 
