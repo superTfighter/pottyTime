@@ -7,8 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.pottytime.data.Toilet
 import com.example.pottytime.database.ToiletDatabase
 import com.example.pottytime.repositories.ToiletRepository
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+
 
 class ToiletViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -17,12 +18,18 @@ class ToiletViewModel(application: Application) : AndroidViewModel(application) 
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
-    val allWords: LiveData<List<Toilet>>
+    val allToilets: LiveData<List<Toilet>>
 
     init {
         val wordsDao = ToiletDatabase.getDatabase(application, viewModelScope).toiletDao()
         repository = ToiletRepository(wordsDao)
-        allWords = repository.allWords
+        allToilets = repository.allWords
+    }
+
+    fun deleteToilet(toilet: Toilet){
+        GlobalScope.launch {
+            repository.delete(toilet);
+        }
     }
 
 }

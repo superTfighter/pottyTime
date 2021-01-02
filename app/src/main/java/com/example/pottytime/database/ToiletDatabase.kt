@@ -34,13 +34,16 @@ abstract class ToiletDatabase : RoomDatabase() {
             toiletDao.deleteAll()
 
             // Add sample toilet.
-            var toilet = Toilet(null, "Teszt helyszín" , 47.3560812, 18.9966442 ,"01234567",ToiletType.MCDONALDS );
+            var toilet = Toilet(null, "Teszt meki" , 47.3560812, 18.9966442 ,"01234567",ToiletType.MCDONALDS );
             toiletDao.insert(toilet);
 
-            toilet = Toilet(null, "Teszt helyszín 2" , 47.3560812, 18.9966442 ,"01234567",ToiletType.BURGERKING );
+            toilet = Toilet(null, "Teszt burger" , 47.3560812, 18.9966442 ,"01234567",ToiletType.BURGERKING );
             toiletDao.insert(toilet);
 
-            toilet = Toilet(null, "Teszt helyszín 3" , 47.3560812, 18.9966442 ,"01234567",ToiletType.OTHER );
+            toilet = Toilet(null, "Teszt kfc" , 47.3560812, 18.9966442 ,"01234567",ToiletType.KFC );
+            toiletDao.insert(toilet);
+
+            toilet = Toilet(null, "Teszt más" , 47.3560812, 18.9966442 ,"01234567",ToiletType.OTHER );
             toiletDao.insert(toilet);
 
         }

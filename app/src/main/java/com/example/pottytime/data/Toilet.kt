@@ -19,7 +19,8 @@ data class Toilet(
 public enum class ToiletType {
     OTHER(0),
     MCDONALDS(1),
-    BURGERKING(2);
+    BURGERKING(2),
+    KFC(3);
 
     private val value: Int;
 
@@ -36,7 +37,6 @@ public enum class ToiletType {
     }
 
 }
-
 
 class ToiletTypeConverter{
 

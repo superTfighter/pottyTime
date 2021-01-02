@@ -13,4 +13,8 @@ class ToiletRepository(private val toiletDao: ToiletDao) {
     suspend fun insert(toilet: Toilet) {
         toiletDao.insert(toilet)
     }
+
+    suspend fun delete(toilet: Toilet){
+        toiletDao.delete(toilet);
+    }
 }

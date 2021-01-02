@@ -33,8 +33,8 @@ class NewToiletViewModel(application: Application) : AndroidViewModel(applicatio
     private lateinit var type : ToiletType
 
     init {
-        val wordsDao = ToiletDatabase.getDatabase(application, viewModelScope).toiletDao()
-        repository = ToiletRepository(wordsDao)
+        val toiletDao = ToiletDatabase.getDatabase(application, viewModelScope).toiletDao()
+        repository = ToiletRepository(toiletDao)
     }
 
     fun onSaveButtonClick(v : View)

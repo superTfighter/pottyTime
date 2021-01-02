@@ -1,26 +1,26 @@
 package com.example.pottytime.adapters
 
+import android.app.AlertDialog
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pottytime.R
 import com.example.pottytime.data.Toilet
 import com.example.pottytime.data.ToiletType
 import com.example.pottytime.databinding.RecyclerviewItemBinding
-import java.util.function.ToLongBiFunction
 
 
 class ToiletListAdapter internal constructor(
     context: Context
 ) : RecyclerView.Adapter<ToiletListAdapter.ToiletViewHolder>() {
 
-    lateinit var listener: OnToiletSelected
+    lateinit var clickListener: OnToiletSelected
+    lateinit var longClickListener: OnToiletLongSelected
     private val layoutInflater = LayoutInflater.from(context)
-    private var toilet = emptyList<Toilet>() // Cached copy of words
+    private var toilet = mutableListOf<Toilet>() // Cached copy of words
 
 
     inner class ToiletViewHolder constructor (
@@ -36,6 +36,9 @@ class ToiletListAdapter internal constructor(
                 ToiletType.MCDONALDS -> {
                     recyclerItemListBinding.image.setImageResource(R.drawable.mcdonaldshu)
                 }
+                ToiletType.KFC ->{
+                    recyclerItemListBinding.image.setImageResource(R.drawable.kfc)
+                }
                 else -> {
                     recyclerItemListBinding.image.setImageResource(R.drawable.other)
                 }
@@ -45,6 +48,7 @@ class ToiletListAdapter internal constructor(
         fun setData(toilet : Toilet) {
             recyclerItemListBinding.toilet = toilet;
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToiletViewHolder {
@@ -61,13 +65,35 @@ class ToiletListAdapter internal constructor(
         holder.setImage(current.type);
         holder.setData(current)
 
+        holder.itemView.setOnLongClickListener {
+            val alertDialog =
+                AlertDialog.Builder(it.context)
+            alertDialog.setTitle("Delete " + current.name)
+            alertDialog.setMessage("Are you sure you want to remove permanently this item?")
+            alertDialog.setPositiveButton("Cancel") {
+                    dialog, _ -> dialog.cancel()
+            }
+            alertDialog.setNegativeButton("Yes") {
+                    dialog, _ ->
+                toilet.removeAt(position);
+                notifyItemRemoved(position);
+                notifyDataSetChanged();
+                longClickListener.onToiletLongSelected(current);
+            }
+
+            val dialog = alertDialog.create()
+            dialog.show()
+
+            true
+        }
+
         holder.itemView.setOnClickListener{
-            listener.onToiletSelected(current)
+            clickListener.onToiletSelected(current)
         }
     }
 
     internal fun setToilets(toilets: List<Toilet>) {
-        this.toilet = toilets
+        this.toilet = toilets.toMutableList()
         notifyDataSetChanged()
     }
 
@@ -75,6 +101,10 @@ class ToiletListAdapter internal constructor(
 
     interface OnToiletSelected {
         fun onToiletSelected(toilet: Toilet)
+    }
+
+    interface OnToiletLongSelected {
+        fun onToiletLongSelected(toilet: Toilet)
     }
 
 

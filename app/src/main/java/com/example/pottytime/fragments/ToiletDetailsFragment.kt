@@ -57,7 +57,10 @@ class ToiletDetailsFragment(private var toilet: Toilet) : Fragment() {
                 binding.image.setImageResource(R.drawable.burgerking)
             }
             ToiletType.MCDONALDS -> {
-                binding.image.setImageResource(R.drawable.mcdonaldshu)
+            binding.image.setImageResource(R.drawable.mcdonaldshu)
+            }
+            ToiletType.KFC -> {
+                binding.image.setImageResource(R.drawable.kfc)
             }
             else -> {
                 binding.image.setImageResource(R.drawable.other)

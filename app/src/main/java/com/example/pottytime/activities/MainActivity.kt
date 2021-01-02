@@ -13,13 +13,16 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pottytime.R
 import com.example.pottytime.adapters.ToiletListAdapter
 import com.example.pottytime.data.Toilet
+import com.example.pottytime.database.ToiletDatabase
 import com.example.pottytime.fragments.ToiletDetailsFragment
 import com.example.pottytime.fragments.ToiletListFragment
+import com.example.pottytime.repositories.ToiletRepository
 import com.example.pottytime.viewmodels.ToiletViewModel
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -43,9 +46,6 @@ class MainActivity : AppCompatActivity() , ToiletListAdapter.OnToiletSelected {
                 .add(R.id.root_layout, ToiletListFragment.newInstance(), "toiletList")
                 .commit()
         }
-
-
-
     }
 
     @Override
@@ -96,4 +96,5 @@ class MainActivity : AppCompatActivity() , ToiletListAdapter.OnToiletSelected {
             .addToBackStack(null)
             .commit()
     }
+
 }
