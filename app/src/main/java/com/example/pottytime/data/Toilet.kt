@@ -16,24 +16,14 @@ data class Toilet(
 )
 
 @Serializable
-public enum class ToiletType {
+enum class ToiletType(private val value: Int) {
     OTHER(0),
     MCDONALDS(1),
     BURGERKING(2),
     KFC(3);
 
-    private val value: Int;
-
-    constructor(value: Int){
-        this.value = value;
-    }
-
     open fun getValue() :  Int {
         return this.value;
-    }
-
-    override fun toString(): String {
-        return super.toString()
     }
 
 }

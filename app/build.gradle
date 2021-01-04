@@ -78,4 +78,5 @@ dependencies {
     testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
     testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 }

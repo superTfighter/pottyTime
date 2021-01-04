@@ -25,7 +25,8 @@
         android:text="@string/extended_fab_label"
         app:icon="@drawable/ic_add_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        android:backgroundTint="@color/colorPrimary"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

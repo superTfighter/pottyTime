@@ -86,11 +86,15 @@ class ToiletDetailsFragment(private var toilet: Toilet) : Fragment() {
 
         mapController.setCenter(startPoint)
 
-        //Marker
-        this.addMarkerToPosition(toilet.latitude ?: 0.0,toilet.longitude ?: 0.0,map);
+        if(!(toilet.latitude == null || toilet.longitude == null)){
+            //Marker
+            this.addMarkerToPosition(toilet.name,toilet.latitude ?: 0.0,toilet.longitude ?: 0.0,map);
+        }
+
+
     }
 
-    private fun addMarkerToPosition(lan : Double, lon : Double,map : MapView, icon : Drawable = resources.getDrawable(R.drawable.ic_test) )
+    private fun addMarkerToPosition(name: String,lan : Double, lon : Double,map : MapView, icon : Drawable = resources.getDrawable(R.drawable.ic_test) )
     {
         //Marker
         val m = Marker(map)
@@ -99,7 +103,7 @@ class ToiletDetailsFragment(private var toilet: Toilet) : Fragment() {
         m.textLabelForegroundColor = Color.RED
         m.textLabelFontSize = 40
         m.setIcon(icon);
-        m.setTitle("Helyszín")
+        m.setTitle(name)
         m.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP)
         map.getOverlays()
             .add(m)

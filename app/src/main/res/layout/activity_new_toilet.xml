@@ -10,77 +10,90 @@
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <EditText
-        android:id="@+id/name"
-        android:text="@={viewmodel.name}"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="Name"
-        android:inputType="textAutoComplete"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/lat"
-        android:text="@={viewmodel.lat}"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="Latitude(not required)"
-        android:inputType="textAutoComplete"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
+        android:layout_height="match_parent"
+        android:layout_margin="7dp"
+        android:background="@drawable/rounder_linearlayout_background"
+        android:gravity="center"
+        android:orientation="vertical">
 
 
-    <EditText
-        android:id="@+id/lon"
-        android:text="@={viewmodel.lon}"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="Longitude(not required)"
-        android:inputType="textAutoComplete"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/big_padding"
+            android:fontFamily="sans-serif-light"
+            android:hint="Name"
+            android:inputType="textAutoComplete"
+            android:minHeight="@dimen/min_height"
+            android:text="@={viewmodel.name}"
+            android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/code"
-        android:text="@={viewmodel.code}"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="Code"
-        android:inputType="textAutoComplete"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
+        <EditText
+            android:id="@+id/lat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/big_padding"
+            android:fontFamily="sans-serif-light"
+            android:hint="Latitude(not required)"
+            android:inputType="textAutoComplete"
+            android:minHeight="@dimen/min_height"
+            android:text="@={viewmodel.lat}"
+            android:textSize="18sp" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp"
-        android:onItemSelected="@{(parent,view,pos,id)->viewmodel.onSelectItem(parent,view,pos,id)}"/>
+        <EditText
+            android:id="@+id/lon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/big_padding"
+            android:fontFamily="sans-serif-light"
+            android:hint="Longitude(not required)"
+            android:inputType="textAutoComplete"
+            android:minHeight="@dimen/min_height"
+            android:text="@={viewmodel.lon}"
+            android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/button_save"
-        android:onClick="@{(v) -> viewmodel.onSaveButtonClick(v) }"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_padding"
-        android:background="@color/colorPrimary"
-        android:text="@string/button_save"
-        android:textColor="@color/buttonLabel" />
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/big_padding"
+            android:fontFamily="sans-serif-light"
+            android:hint="Code"
+            android:inputType="textAutoComplete"
+            android:minHeight="@dimen/min_height"
+            android:text="@={viewmodel.code}"
+            android:textSize="18sp" />
 
-</LinearLayout>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/big_padding"
+            android:minHeight="@dimen/min_height"
+            android:onItemSelected="@{(parent,view,pos,id)->viewmodel.onSelectItem(parent,view,pos,id)}"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/big_padding"
+            android:background="@color/colorPrimary"
+            android:onClick="@{(v) -> viewmodel.onSaveButtonClick(v) }"
+            android:text="@string/button_save"
+            android:textColor="@color/buttonLabel" />
+
+        <Button
+            android:id="@+id/button_save_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/big_padding"
+            android:background="@color/colorPrimary"
+            android:onClick="@{(v) -> viewmodel.onSaveLocationClick(v) }"
+            android:text="@string/button_save_location"
+            android:textColor="@color/buttonLabel" />
+
+    </LinearLayout>
 </layout>

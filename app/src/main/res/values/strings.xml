@@ -4,11 +4,10 @@
     <string name="latAndLon">Location:  %1$s , %2$s</string>
     <string name="code">Code: %1$s</string>
 
-    <string name="hint_word">Word…</string>
-    <string name="button_save">Save</string>
+    <string name="button_save">Save Toilet</string>
+    <string name="button_save_location">Save current location</string>
     <string name="empty_not_saved">Toilet not saved because it is empty.</string>
     <string name="saved">Toilet is saved.</string>
     <string name="extended_fab_content_desc">Add word</string>
     <string name="extended_fab_label">Add new Toilet</string>
-    <string name="delete_toilet">Törlés</string>
 </resources>

@@ -21,27 +21,59 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" />
 
-
         </LinearLayout>
 
-
         <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp">
+            android:layout_margin="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/rounder_linearlayout_background">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dog_detail_name_margin_top"
+                android:layout_marginBottom="0dp"
+                android:text="@{toilet.name}"
+                style="@style/TextAppearance.AppCompat.Title" />
 
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
+                android:layout_marginTop="@dimen/dog_detail_image_margin_vertical"
+                android:layout_marginBottom="@dimen/dog_detail_image_margin_vertical"
+                android:adjustViewBounds="true"
                 android:contentDescription="@null"
-                android:layout_gravity="center"
-                />
+                android:scaleType="centerCrop" />
 
+            <TextView
+                android:id="@+id/codeContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:text="@{@string/code(toilet.code)}"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/locationContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:layout_marginTop="0dp"
+                android:text="@{@string/latAndLon(toilet.latitude,toilet.longitude)}"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
 
         </LinearLayout>
 
     </LinearLayout>
-
 
 </layout>

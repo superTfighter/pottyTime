@@ -23,7 +23,7 @@ abstract class ToiletDatabase : RoomDatabase() {
             super.onOpen(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    populateDatabase(database.toiletDao())
+                    //populateDatabase(database.toiletDao())
                 }
             }
         }

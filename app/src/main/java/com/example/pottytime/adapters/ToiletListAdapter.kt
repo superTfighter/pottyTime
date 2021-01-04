@@ -2,8 +2,10 @@ package com.example.pottytime.adapters
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +22,7 @@ class ToiletListAdapter internal constructor(
     lateinit var clickListener: OnToiletSelected
     lateinit var longClickListener: OnToiletLongSelected
     private val layoutInflater = LayoutInflater.from(context)
-    private var toilet = mutableListOf<Toilet>() // Cached copy of words
+    private var toilet = mutableListOf<Toilet>()
 
 
     inner class ToiletViewHolder constructor (
@@ -65,31 +67,53 @@ class ToiletListAdapter internal constructor(
         holder.setImage(current.type);
         holder.setData(current)
 
-        holder.itemView.setOnLongClickListener {
-            val alertDialog =
-                AlertDialog.Builder(it.context)
-            alertDialog.setTitle("Delete " + current.name)
-            alertDialog.setMessage("Are you sure you want to remove permanently this item?")
-            alertDialog.setPositiveButton("Cancel") {
-                    dialog, _ -> dialog.cancel()
-            }
-            alertDialog.setNegativeButton("Yes") {
-                    dialog, _ ->
-                toilet.removeAt(position);
-                notifyItemRemoved(position);
-                notifyDataSetChanged();
-                longClickListener.onToiletLongSelected(current);
-            }
+        holder.itemView.setOnTouchListener { view, motionEvent ->
+            when(motionEvent.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    holder.itemView.setBackgroundResource(R.drawable.rounder_linearlayout_background_selected)
+                }
+                MotionEvent.ACTION_UP -> {
 
-            val dialog = alertDialog.create()
-            dialog.show()
+                    val pressTime : Long = motionEvent.eventTime - motionEvent.downTime;
 
+                    if(pressTime < 300){
+                        clickListener.onToiletSelected(current)
+                    }
+                    else
+                    {
+
+                        val alertDialog =
+                            AlertDialog.Builder(view.context)
+                        alertDialog.setTitle("Delete " + current.name)
+                        alertDialog.setMessage("Are you sure you want to remove permanently this item?")
+                        alertDialog.setPositiveButton("Cancel") {
+                                dialog, _ -> dialog.cancel()
+                        }
+                        alertDialog.setNegativeButton("Yes") {
+                                dialog, _ ->
+                            toilet.removeAt(position);
+                            notifyItemRemoved(position);
+                            notifyDataSetChanged();
+                            longClickListener.onToiletLongSelected(current);
+                        }
+
+                        val dialog = alertDialog.create()
+                        dialog.show()
+                    }
+
+                    holder.itemView.setBackgroundResource(R.drawable.rounder_linearlayout_background);
+                }
+                MotionEvent.ACTION_CANCEL->{
+                    holder.itemView.setBackgroundResource(R.drawable.rounder_linearlayout_background);
+                }
+                MotionEvent.ACTION_SCROLL ->{
+                    holder.itemView.setBackgroundResource(R.drawable.rounder_linearlayout_background);
+                }
+
+            }
             true
         }
 
-        holder.itemView.setOnClickListener{
-            clickListener.onToiletSelected(current)
-        }
     }
 
     internal fun setToilets(toilets: List<Toilet>) {
